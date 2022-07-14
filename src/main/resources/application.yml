@@ -1,0 +1,22 @@
+# Spring Boot configuration
+spring:
+  profiles:
+    active: development
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/CadUsuarios
+    username: usuario
+    password: senha
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+    
+# Server configuration
+server:
+  port: 8080 #set your port
