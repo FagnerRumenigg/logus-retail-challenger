@@ -1,6 +1,6 @@
 package br.com.logus.cadUser.service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,18 @@ public class CadUserService {
 	
 	public Boolean insertUser(CadUserDTO cadUsuarioDto) {
 		List<CadUser> userExists = repository.findByUsuario(cadUsuarioDto.getDcrLogin());
-		CadUser user = new CadUser(null, cadUsuarioDto.getDcrUsuario(), cadUsuarioDto.getDcrLogin(), cadUsuarioDto.getDcrSenha(), LocalDateTime.now(), LocalDateTime.now());
+
+		Boolean isDisabled = cadUsuarioDto.getIsDisabled();
+		LocalDate disabledDate = LocalDate.now();
+		
+		if(isDisabled == null || !isDisabled) {
+			disabledDate = null;
+		}else {
+			disabledDate = LocalDate.now();
+		}
+		
+		CadUser user = new CadUser(null, cadUsuarioDto.getDcrUsuario(), cadUsuarioDto.getDcrLogin(), cadUsuarioDto.getDcrSenha(), LocalDate.now(), disabledDate);
+		
 		if(userExists.isEmpty()) {
 			repository.save(user);
 			return true;
@@ -35,8 +46,18 @@ public class CadUserService {
 	
 	public Boolean updateUser(Integer id, CadUserDTO cadUsuarioDto ) {
 		List<CadUser> userExists = repository.findByUsuario(cadUsuarioDto.getDcrLogin());
+		
+		Boolean isDisabled = cadUsuarioDto.getIsDisabled();
+		LocalDate disabledDate = LocalDate.now();
+		
+		if(isDisabled == null || !isDisabled) {
+			disabledDate = null;
+		}else {
+			disabledDate = LocalDate.now();
+		}
+		
 		if(userExists.isEmpty()) {
-			repository.update(cadUsuarioDto.getDcrUsuario(), cadUsuarioDto.getDcrLogin(), cadUsuarioDto.getDcrSenha(), LocalDateTime.now(), LocalDateTime.now(), id);
+			repository.update(cadUsuarioDto.getDcrUsuario(), cadUsuarioDto.getDcrLogin(), cadUsuarioDto.getDcrSenha(), LocalDate.now(), disabledDate, id);
 			return true;
 		}else {
 			return false;

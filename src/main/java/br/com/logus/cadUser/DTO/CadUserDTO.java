@@ -1,9 +1,7 @@
 package br.com.logus.cadUser.DTO;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,21 +22,20 @@ public class CadUserDTO implements Serializable{
 	private Integer idCadUsuario;
 	
 	@Getter @Setter
-	@Column(name="dcr_usuario")
 	private String dcrUsuario;
 	
 	@Getter @Setter
-	@Column(name="dcr_login")
 	private String dcrLogin;
 	
 	@Getter @Setter
-	@Column(name="dcr_senha")
 	private String dcrSenha;
 
 	@Getter @Setter
-	private LocalDateTime datCadastro;
+	private LocalDate datCadastro;
 	
 	@Getter @Setter
-	@Column(name="dat_desativacao")
-	private LocalDateTime datDesativacao;
+	private LocalDate datDesativacao;
+	
+	@Getter @Setter
+	private Boolean isDisabled;
 }

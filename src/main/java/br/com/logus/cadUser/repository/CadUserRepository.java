@@ -1,6 +1,6 @@
 package br.com.logus.cadUser.repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -24,6 +24,6 @@ public interface CadUserRepository extends JpaRepository<CadUser,Integer>{
 	@Query(value = "UPDATE CADUSUARIOS SET DCR_USUARIO = :USUARIO, DCR_LOGIN = :LOGIN, DCR_SENHA = :SENHA,"+
 	"DAT_CADASTRO = :CADASTRO, DAT_DESATIVACAO = :DESATIVACAO WHERE idcadusuario = :ID", nativeQuery=true)
 	void update(@Param("USUARIO") String usuario, @Param("LOGIN") String login, @Param("SENHA") String senha,
-			@Param("CADASTRO") LocalDateTime cadastro, @Param("DESATIVACAO") LocalDateTime desativacao, @Param("ID") Integer id);
+			@Param("CADASTRO") LocalDate cadastro, @Param("DESATIVACAO") LocalDate desativacao, @Param("ID") Integer id);
 	
 }

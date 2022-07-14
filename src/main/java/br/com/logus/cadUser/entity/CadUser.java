@@ -1,7 +1,7 @@
 package br.com.logus.cadUser.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,9 +47,9 @@ public class CadUser implements Serializable{
 
 	@Getter @Setter
 	@Column(name="dat_Cadastro")
-	private LocalDateTime datCadastro;
+	private LocalDate datCadastro;
 	
 	@Getter @Setter
 	@Column(name="dat_desativacao")
-	private LocalDateTime datDesativacao;
+	private LocalDate datDesativacao;
 }

@@ -61,6 +61,4 @@ public class CadUserController {
 		service.deleteUser(id);
 		return ResponseEntity.ok().body(null);
 	}
-	
-	
 }
